@@ -1,0 +1,1 @@
+/home/yuanyuanda/.config/nvim/.nvim.lua

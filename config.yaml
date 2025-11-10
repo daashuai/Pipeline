@@ -1,0 +1,20 @@
+database:
+  dialect: mysql          # 数据库类型
+  driver: pymysql         # Python MySQL 驱动（推荐）
+  host: localhost         # 数据库主机
+  port: 3306              # 端口
+  username: admin         # 替换为你的 MySQL 用户名
+  password: 88888888         # 替换为你的密码
+  database: pipeline      # 数据库名
+  echo: false             # 是否打印 SQL（调试用）
+  pool_size: 10           # 连接池大小（可选）
+
+logging:
+  level: INFO
+  file: logs/app.log
+
+scheduling:
+  default_priority: 1
+  max_batch_duration_hours: 48
+
+# 其他未来扩展配置可继续添加...
