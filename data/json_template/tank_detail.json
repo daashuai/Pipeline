@@ -1,0 +1,7 @@
+[
+    {
+        "tank_id": "储罐编号",
+        "tank_capacity": "罐容",
+        "oil_height": "当前罐内的油品高度"
+    }
+]

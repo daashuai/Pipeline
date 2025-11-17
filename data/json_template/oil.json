@@ -1,0 +1,12 @@
+[
+    {
+        "oil_name": "油品名称",
+        "oil_id": "油品编号",
+        "p20": "p20",
+        "freezing_point": "凝点",
+        "h2s": "硫化氢",
+        "kinematic_viscosity": "运动粘度",
+        "place_of_origin": "原产地",
+        "transfer_way": "输送方式"
+    }
+]

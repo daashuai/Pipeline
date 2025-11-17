@@ -1,0 +1,18 @@
+[
+  {
+    "pipe_id": 1,
+    "pipe_name": "联能",
+    "pipe_capacity_per_meter": 0.3709,
+    "pipe_shutdown_start_time": null,
+    "pipe_shutdown_end_time": null,
+    "pipe_shutdown_reason": null
+  },
+  {
+    "pipe_id": 2,
+    "pipe_name": "港源",
+    "pipe_capacity_per_meter": 0.3709,
+    "pipe_shutdown_start_time": null,
+    "pipe_shutdown_end_time": null,
+    "pipe_shutdown_reason": null
+  }
+]
