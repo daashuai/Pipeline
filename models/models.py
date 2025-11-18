@@ -43,11 +43,17 @@ class Tank(Base):
     def release(self):
         self.status = "AVAILABLE"
 
+class Customer(Base):
+    __tablename__ = 'customer'
 
-class Order(Base):
+    custormer_id= Column(String(50), primary_key=True)
+    customer_name = Column(String(100))
+
+
+class CustomerOrder(Base):
     __tablename__ = 'orders'
 
-    order_id = Column(String(50), primary_key=True)
+    custormer_order_id = Column(String(50), primary_key=True)
     customer = Column(String(100))
     oil_type = Column(String(50))
     required_volume_m3 = Column(Float)
@@ -58,6 +64,20 @@ class Order(Base):
     preferred_branches = Column(JSON, default=list)
     status = Column(String(50), default="PENDING")
 
+class DispatchOrder(Base):
+    __tablename__ = 'dispatch_orders'
+    
+    dispatch_order_id = Column(String(50), primary_key=True)
+    custormer_order_id = Column(String(50), primary_key=True)
+    oil_type = Column(String(50))
+    quantity = Column(Float)
+    source_tank_id = Column(String(50))
+    target_tank_id = Column(String(50))
+    pipeline_path = Column(JSON)  # 管线ID列表
+    start_time = Column(Integer)
+    end_time = Column(Integer)
+    status = Column(String(50), default="DRAFT")  # 状态: DRAFT/SCHEDULED/RUNNING/COMPLETED/CONFLICT
+    cleaning_required = Column(Boolean, default=False)  # 是否需要清洗
 
 class Branch(Base):
     __tablename__ = 'branches'
@@ -75,19 +95,19 @@ class Pipeline(Base):
     max_rate_m3h = Column(Float)
 
 
-class Plan(Base):
-    __tablename__ = 'plans'
-
-    plan_id = Column(String(50), primary_key=True)
-    order_id = Column(String(50), ForeignKey('orders.order_id'))
-    branch_id = Column(String(50), ForeignKey('branches.branch_id'))
-    start_time = Column(DateTime)
-    end_time = Column(DateTime)
-    rate_m3h = Column(Float)
-    status = Column(String(20), default="DRAFT")
-
-    order = relationship('Order')
-    branch = relationship('Branch')
+# class Plan(Base):
+#     __tablename__ = 'plans'
+# 
+#     plan_id = Column(String(50), primary_key=True)
+#     order_id = Column(String(50), ForeignKey('orders.order_id'))
+#     branch_id = Column(String(50), ForeignKey('branches.branch_id'))
+#     start_time = Column(DateTime)
+#     end_time = Column(DateTime)
+#     rate_m3h = Column(Float)
+#     status = Column(String(20), default="DRAFT")
+# 
+#     order = relationship('Order')
+#     branch = relationship('Branch')
 
 
 # === ORM Session 工具 ===
