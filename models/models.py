@@ -54,7 +54,7 @@ class CustomerOrder(Base):
     __tablename__ = 'orders'
 
     custormer_order_id = Column(String(50), primary_key=True)
-    customer = Column(String(100))
+    customer_id = Column(String(100))
     oil_type = Column(String(50))
     required_volume_m3 = Column(Float)
     earliest_start = Column(DateTime)
