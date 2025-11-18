@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from copy import deepcopy
 from typing import List, Dict, Tuple, Optional, Any
 import time
-from .state import SchedulingState, TankState, PipelineState
+from state import SchedulingState, TankState, PipelineState
 from models.models import CustomerOrder, DispatchOrder
 
 class PathScoringStrategy(ABC):
@@ -304,7 +304,7 @@ class PipelineScheduler:
         # 注意：一次只调度一个批次，下轮循环再处理剩余部分
         return dispatch_orders
     
-    def schedule_order_completely(scheduler: OilScheduler, order: CustomerOrder, state: SchedulingState, 
+    def schedule_order_completely(order: CustomerOrder, state: SchedulingState, 
     
                                 max_attempts=10, timeout_seconds=30):
     
@@ -812,7 +812,8 @@ class PipelineScheduler:
                 if order.remaining_quantity < self.min_batch_size * 1.5 and time_pressure > 4:
                     continue
                 
-                dispatch_orders = self.schedule_order_completely(order, state)
+                # dispatch_orders = self.schedule_order_completely(order, state)
+                dispatch_orders = self.schedule_order(order, state)
                 
                 if dispatch_orders:
                     all_dispatch_orders.extend(dispatch_orders)

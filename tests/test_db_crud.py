@@ -1,4 +1,3 @@
- test_db_connection.py
 import yaml
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker

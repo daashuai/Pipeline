@@ -3,45 +3,30 @@ from copy import deepcopy
 from typing import List, Dict, Tuple, Optional, Any
 import time
 from models.models import Tank, Pipeline, CustomerOrder, DispatchOrder
-from .state import TankState, PipelineState, SchedulingState
-from .scheduler import PipelineScheduler
-# ======================
-# 5. 测试与使用示例
-# ======================
+from state import TankState, PipelineState, SchedulingState
+from scheduler import PipelineScheduler
+from sqlalchemy import create_engine, text
+from sqlalchemy.orm import sessionmaker
+import yaml
+from datetime import datetime, timedelta
+import uuid
+from utils.database import load_table_data
 
-def create_test_data() -> Tuple[Dict[str, Tank], Dict[str, Pipeline], List[CustomerOrder]]:
-    """创建测试数据"""
-    # 油罐数据
-    tanks = {
-        "tank1": Tank("tank1", 1000, 800, ["oilA", "oilB"], (200, 900)),
-        "tank2": Tank("tank2", 500, 300, ["oilA"], (100, 450)),
-        "tank3": Tank("tank3", 800, 200, ["oilB", "oilC"], (150, 700))
-    }
+def main():
+    """主函数：演示调度流程"""
     
-    # 管线数据
-    pipelines = {
-        "pipe1": Pipeline("pipe1", "tank1", "tank2", 50, 5.0),
-        "pipe2": Pipeline("pipe2", "tank1", "junction", 60, 5.5),
-        "pipe3": Pipeline("pipe3", "junction", "tank2", 40, 4.8),
-        "pipe4": Pipeline("pipe4", "tank2", "tank3", 30, 4.0),
-        "pipe5": Pipeline("pipe5", "junction", "tank3", 50, 5.0)
-    }
-    
+    # 模拟滚动订单
     # 订单数据（含优先级）
     now = int(time.time())
-    customer_orders = [
+    orders = [
         CustomerOrder("order1", "custA", "oilA", 200, (now, now + 8*3600), 9, "tank2"),
         CustomerOrder("order2", "custB", "oilB", 300, (now, now + 12*3600), 7, "tank3"),
         CustomerOrder("order3", "custC", "oilA", 400, (now + 4*3600, now + 24*3600), 5, "tank2"),
         CustomerOrder("order4", "custD", "oilC", 150, (now + 2*3600, now + 6*3600), 8, "tank3")
     ]
-    
-    return tanks, pipelines, customer_orders
+    tanks = load_table_data("Tank")
+    pipelines = load_table_data("Pipeline")
 
-def main():
-    """主函数：演示调度流程"""
-    # 1. 创建基础数据
-    tanks, pipelines, orders = create_test_data()
     base_state = SchedulingState(tanks, pipelines)
     
     # 2. 创建调度器（使用规则基础策略）
