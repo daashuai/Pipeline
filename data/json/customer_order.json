@@ -1,0 +1,156 @@
+[
+    {
+        "customer_name":"金诚",
+        "oil_type":"MALAYSIA BLEND",
+        "required_volume":528.0,
+        "start_time":null,
+        "entry_tank_id":222.0,
+        "end_time":"2024-08-21 01:52:00",
+        "finish_storage_tank_time":"2024-08-21 02:06:24",
+        "branch_start_time":"2024-08-21 01:52:00",
+        "branch_end_time":"2024-08-25 07:24:48"
+    },
+    {
+        "customer_name":"鑫泰",
+        "oil_type":"MALAYSIA BLEND",
+        "required_volume":17000.0,
+        "start_time":null,
+        "entry_tank_id":221.0,
+        "end_time":"2024-08-21 02:06:24",
+        "finish_storage_tank_time":"2024-08-21 10:06:23",
+        "branch_start_time":"2024-08-22 09:18:12",
+        "branch_end_time":"2024-08-23 23:27:49"
+    },
+    {
+        "customer_name":"鑫泰",
+        "oil_type":"MALAYSIA BLEND",
+        "required_volume":17000.0,
+        "start_time":null,
+        "entry_tank_id":231.0,
+        "end_time":"2024-08-21 10:06:23",
+        "finish_storage_tank_time":"2024-08-21 18:06:23",
+        "branch_start_time":"2024-08-23 23:27:49",
+        "branch_end_time":"2024-08-25 13:37:33"
+    },
+    {
+        "customer_name":"华星",
+        "oil_type":"SEPIA\/LAPA\/WTI",
+        "required_volume":26031.0,
+        "start_time":null,
+        "entry_tank_id":211.0,
+        "end_time":"2024-08-21 18:06:23",
+        "finish_storage_tank_time":"2024-08-22 07:09:00",
+        "branch_start_time":"2024-08-22 07:09:00",
+        "branch_end_time":"2024-08-25 02:34:14"
+    },
+    {
+        "customer_name":"胜星",
+        "oil_type":"BITUMINOUS MIXTURE",
+        "required_volume":27075.0,
+        "start_time":"2024-08-20 06:38:00",
+        "entry_tank_id":242.0,
+        "end_time":"2024-08-22 07:09:00",
+        "finish_storage_tank_time":"2024-08-22 21:02:28",
+        "branch_start_time":"2024-08-22 21:02:28",
+        "branch_end_time":"2024-08-24 21:54:32"
+    },
+    {
+        "customer_name":"京博",
+        "oil_type":"KIMANIS",
+        "required_volume":28500.0,
+        "start_time":"2024-08-20 19:00:00",
+        "entry_tank_id":281.0,
+        "end_time":"2024-08-22 21:02:28",
+        "finish_storage_tank_time":"2024-08-23 10:05:05",
+        "branch_start_time":"2024-08-22 21:02:28",
+        "branch_end_time":"2024-08-24 15:31:35"
+    },
+    {
+        "customer_name":"京博",
+        "oil_type":"MALAYSIA HAEVY BLEND",
+        "required_volume":23040.0,
+        "start_time":"2024-08-21 07:30:00",
+        "entry_tank_id":241.0,
+        "end_time":"2024-08-23 10:05:05",
+        "finish_storage_tank_time":"2024-08-23 21:12:54",
+        "branch_start_time":"2024-08-24 15:31:35",
+        "branch_end_time":"2024-08-25 23:53:04"
+    },
+    {
+        "customer_name":"齐成",
+        "oil_type":"ENPING",
+        "required_volume":37936.8,
+        "start_time":"2024-08-21 17:44:24",
+        "entry_tank_id":261.0,
+        "end_time":"2024-08-23 21:12:54",
+        "finish_storage_tank_time":"2024-08-24 15:57:32",
+        "branch_start_time":"2024-08-23 21:12:54",
+        "branch_end_time":"2024-08-29 02:18:26"
+    },
+    {
+        "customer_name":"京博",
+        "oil_type":"KIMANIS",
+        "required_volume":13300.0,
+        "start_time":"2024-08-22 12:27:05",
+        "entry_tank_id":281.0,
+        "end_time":"2024-08-24 15:57:32",
+        "finish_storage_tank_time":"2024-08-24 22:02:45",
+        "branch_start_time":"2024-08-24 15:57:32",
+        "branch_end_time":"2024-09-02 14:21:40"
+    },
+    {
+        "customer_name":"胜星",
+        "oil_type":"BITUMINOUS MIXTURE",
+        "required_volume":4465.0,
+        "start_time":"2024-08-22 18:32:18",
+        "entry_tank_id":242.0,
+        "end_time":"2024-08-24 22:02:45",
+        "finish_storage_tank_time":"2024-08-25 00:05:21",
+        "branch_start_time":"2024-08-24 22:02:45",
+        "branch_end_time":"2024-08-26 23:33:59"
+    },
+    {
+        "customer_name":"京博",
+        "oil_type":"BLUE LASER\/KASLANA",
+        "required_volume":48232.55,
+        "start_time":"2024-08-22 20:34:54",
+        "entry_tank_id":292.0,
+        "end_time":"2024-08-25 00:05:21",
+        "finish_storage_tank_time":"2024-08-25 22:02:45",
+        "branch_start_time":"2024-09-02 14:21:40",
+        "branch_end_time":"2024-09-05 07:57:20"
+    },
+    {
+        "customer_name":"京博",
+        "oil_type":"KIMANIS\/KASLANA",
+        "required_volume":37658.4,
+        "start_time":"2024-08-23 18:32:18",
+        "entry_tank_id":252.0,
+        "end_time":"2024-08-25 22:02:45",
+        "finish_storage_tank_time":"2024-08-26 15:00:08",
+        "branch_start_time":"2024-09-05 07:57:20",
+        "branch_end_time":"2024-09-07 11:10:39"
+    },
+    {
+        "customer_name":"鑫泰",
+        "oil_type":"MALAYSIA BLEND",
+        "required_volume":33150.0,
+        "start_time":"2024-08-24 11:29:41",
+        "entry_tank_id":231.0,
+        "end_time":"2024-08-26 15:00:08",
+        "finish_storage_tank_time":"2024-08-27 06:36:08",
+        "branch_start_time":"2024-08-27 06:36:08",
+        "branch_end_time":"2024-08-30 09:00:59"
+    },
+    {
+        "customer_name":"鑫泰",
+        "oil_type":"MALAYSIA BLEND",
+        "required_volume":3876.0,
+        "start_time":"2024-08-25 04:27:05",
+        "entry_tank_id":221.0,
+        "end_time":"2024-08-27 06:36:08",
+        "finish_storage_tank_time":"2024-08-27 08:25:34",
+        "branch_start_time":"2024-08-30 09:00:59",
+        "branch_end_time":"2024-08-30 17:42:56"
+    }
+]

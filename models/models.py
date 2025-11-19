@@ -15,84 +15,123 @@ Base = declarative_base()
 # === ORM 实体定义 ===
 class Tank(Base):
     __tablename__ = 'tanks'
-    tank_id = Column(String(50), primary_key=True)  # ✅ 指定长度，比如 50
-    owner = Column(String(100))
-    oil_type = Column(String(50))
-    inventory_m3 = Column(Float)
-    max_capacity_m3 = Column(Float)
-    min_safe_level_m3 = Column(Float)
-    compatible_oils = Column(JSON)  # 注意：MySQL 5.7+ 才支持 JSON
-    available_from = Column(DateTime)
-    status = Column(String(20))
+    tank_id = Column(String(50), primary_key=True)  
+    tank_name = Column(String(50))
+    tank_area = Column(String(50))
+    oil_type = Column(String(50)) # 罐内油种
+    inventory = Column(Float) # 库存
+    current_level = Column(Float) # 当前液位
+    tank_capacity_per_meter = Column(Float) # 每米罐容
+    maximum_tank_capacity = Column(Float) # 极限罐容
+    safe_tank_capacity = Column(Float) # 安全罐容
+    maximum_tank_level = Column(Float) # 极限罐位
+    safe_tank_level = Column(Float) # 安全罐位
+    min_safe_level = Column(Float, default=0.0) # 最低罐位
+    status = Column(String(20), default="AVAILABLE")
 
     def can_supply(self, oil_type: str, required_volume: float) -> bool:
         if self.status != "AVAILABLE":
             return False
-        if oil_type not in self.compatible_oils:
-            return False
-        if self.inventory_m3 - required_volume < self.min_safe_level_m3:
+        if self.inventory - required_volume < self.min_safe_level:
             return False
         return True
 
     def reserve(self, volume: float):
-        if volume > self.inventory_m3 - self.min_safe_level_m3:
+        if volume > self.inventory - self.min_safe_level:
             raise ValueError("库存不足，无法预留该体积")
-        self.inventory_m3 -= volume
+        self.inventory -= volume
         self.status = "RESERVED"
 
     def release(self):
         self.status = "AVAILABLE"
 
 class Customer(Base):
-    __tablename__ = 'customer'
+    __tablename__ = 'customers'
 
-    custormer_id= Column(String(50), primary_key=True)
+    customer_id= Column(String(50), primary_key=True)
     customer_name = Column(String(100))
 
 
 class CustomerOrder(Base):
-    __tablename__ = 'orders'
+    __tablename__ = 'customer_orders'
 
-    custormer_order_id = Column(String(50), primary_key=True)
-    customer_id = Column(String(100))
+    custormer_order_id = Column(Integer, primary_key=True, autoincrement=True)
+    customer_name = Column(String(50))
     oil_type = Column(String(50))
-    required_volume_m3 = Column(Float)
-    earliest_start = Column(DateTime)
-    deadline = Column(DateTime)
-    priority = Column(Integer)
-    allow_multi_tank = Column(Boolean, default=True)
-    preferred_branches = Column(JSON, default=list)
+    required_volume = Column(Float)
+    start_time = Column(DateTime) # 本批次发油时间
+    end_time = Column(DateTime) # 到油时间
+    priority = Column(Integer, default=1)
+    entry_tank_id = Column(String(50)) # 进罐号（最终要存储到哪个罐里面）
+    finish_storage_tank_time = Column(DateTime) # 到油之后，油完全存储到罐里所需要的时间
+    branch_start_time = Column(DateTime) # 支线启输时间
+    branch_end_time = Column(DateTime) # 支线计划完成输送时间
+    # allow_multi_tank = Column(Boolean, default=True)
+    # preferred_branches = Column(JSON, default=list)
     status = Column(String(50), default="PENDING")
 
-class DispatchOrder(Base):
-    __tablename__ = 'dispatch_orders'
+# class DispatchOrder(Base):
+#     __tablename__ = 'dispatch_orders'
     
-    dispatch_order_id = Column(String(50), primary_key=True)
-    custormer_order_id = Column(String(50), primary_key=True)
-    oil_type = Column(String(50))
-    quantity = Column(Float)
-    source_tank_id = Column(String(50))
-    target_tank_id = Column(String(50))
-    pipeline_path = Column(JSON)  # 管线ID列表
-    start_time = Column(Integer)
-    end_time = Column(Integer)
-    status = Column(String(50), default="DRAFT")  # 状态: DRAFT/SCHEDULED/RUNNING/COMPLETED/CONFLICT
-    cleaning_required = Column(Boolean, default=False)  # 是否需要清洗
+#     dispatch_order_id = Column(Integer, primary_key=True, autoincrement=True)
+#     custormer_order_id = Column(String(50), primary_key=True)
+#     oil_type = Column(String(50))
+#     required_volume = Column(Float)
+#     source_tank_id = Column(String(50))
+#     target_tank_id = Column(String(50))
+#     pipeline_path = Column(JSON)  # 管线ID列表
+#     start_time = Column(Integer)
+#     end_time = Column(Integer)
+#     status = Column(String(50), default="DRAFT")  # 状态: DRAFT/SCHEDULED/RUNNING/COMPLETED/CONFLICT
+    # cleaning_required = Column(Boolean, default=False)  # 是否需要清洗
 
-class Branch(Base):
-    __tablename__ = 'branches'
+# class Branch(Base):
+#     __tablename__ = 'branches'
 
-    branch_id = Column(String(50), primary_key=True)
-    max_rate_m3h = Column(Float)
-    stop_windows = Column(JSON, default=list)
-    status = Column(String(20), default="AVAILABLE")
+#     branch_id = Column(String(50), primary_key=True)
+#     max_rate_m3h = Column(Float)
+#     stop_windows = Column(JSON, default=list)
+#     status = Column(String(20), default="AVAILABLE")
 
 
-class Pipeline(Base):
-    __tablename__ = 'pipeline'
+class Pipeline_info(Base):
+    __tablename__ = 'pipeline_info' 
 
-    trunk_id = Column(String(50), primary_key=True, default=lambda: f"TR-{uuid.uuid4().hex[:6]}")
-    max_rate_m3h = Column(Float)
+    pipe_id = Column(String(50), primary_key=True)
+    pipe_name = Column(String(50))
+    pipe_capacity_per_meter = Column(Float) # 每米管容
+    pipe_shutdown_start_time = Column(DateTime) # 管道停输开始时间
+    pipe_shutdown_end_time = Column(DateTime) # 管道停输结束时间
+    pipe_shutdown_reason = Column(String(50)) # 管道停输原因
+
+
+# 记录管道干线上站点的信息
+class Pipeline_detail(Base):
+    __tablename__ = 'pipeline_detail' 
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    pipe_id = Column(String(50)) 
+    pipe_name = Column(String(50))
+    station_name = Column(String(50)) # 站点名称
+    pipe_mileage = Column(Float) # 绝对里程
+    pipe_elevation = Column(Float) # 高程
+    is_begin = Column(String(10)) # 是否作为起点
+    is_end = Column(String(10)) # 是否作为终点
+    is_middle = Column(String(10)) # 是否中间站点
+
+
+class Oil(Base):
+    __tablename__ = 'oils'
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    oil_name = Column(String(50))
+    oil_id = Column(String(50))
+    p20 = Column(Float) 
+    freezing_point = Column(Float)
+    h2s = Column(String(50))
+    kinematic_viscosity = Column(String(50))
+    place_of_origin = Column(String(50))
+    transfer_way = Column(String(50))
 
 
 # class Plan(Base):
@@ -108,31 +147,4 @@ class Pipeline(Base):
 # 
 #     order = relationship('Order')
 #     branch = relationship('Branch')
-
-
-# === ORM Session 工具 ===
-def init_db(db_url: str = 'sqlite:///pipeline_batch.db'):
-    engine = create_engine(db_url, echo=False, future=True)
-    Base.metadata.create_all(engine)
-    SessionLocal = sessionmaker(bind=engine)
-    return SessionLocal()
-
-
-if __name__ == "__main__":
-    SessionLocal = init_db()
-    session = SessionLocal()
-
-    # 添加示例数据
-    t1 = Tank(tank_id="T101", owner="华星", oil_type="MURBAN", inventory_m3=35000,
-              max_capacity_m3=50000, min_safe_level_m3=2000,
-              compatible_oils=["MURBAN"], available_from=datetime.now())
-    session.add(t1)
-
-    o1 = Order(order_id="ORD-001", customer="华星", oil_type="MURBAN", required_volume_m3=15000,
-               earliest_start=datetime.now(), deadline=datetime.now()+timedelta(days=2), priority=1)
-    session.add(o1)
-
-    session.commit()
-
-    print("已保存油罐和订单到数据库。")
 

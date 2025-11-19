@@ -1,0 +1,748 @@
+[
+    {
+        "tank_id":"T101",
+        "current_level":4.647,
+        "oil_type":"SINGMA",
+        "inventory":9605.574,
+        "safe_tank_capacity":34203.078,
+        "maximum_tank_capacity":35757.378,
+        "tank_capacity_per_meter":2826,
+        "safe_tank_level":16.75,
+        "maximum_tank_level":17.3
+    },
+    {
+        "tank_id":"T102",
+        "current_level":2.518,
+        "oil_type":"OMAN",
+        "inventory":7059.348,
+        "safe_tank_capacity":40276.152,
+        "maximum_tank_capacity":41773.932,
+        "tank_capacity_per_meter":2826,
+        "safe_tank_level":16.77,
+        "maximum_tank_level":17.3
+    },
+    {
+        "tank_id":"T103",
+        "current_level":16.399,
+        "oil_type":"BITUMEN MIXTURE",
+        "inventory":994.752,
+        "safe_tank_capacity":1048.446,
+        "maximum_tank_capacity":2546.226,
+        "tank_capacity_per_meter":2826,
+        "safe_tank_level":16.77,
+        "maximum_tank_level":17.3
+    },
+    {
+        "tank_id":"T104",
+        "current_level":4.612,
+        "oil_type":"SINGMA",
+        "inventory":1031.49,
+        "safe_tank_capacity":34358.508,
+        "maximum_tank_capacity":35856.288,
+        "tank_capacity_per_meter":2826,
+        "safe_tank_level":16.77,
+        "maximum_tank_level":17.3
+    },
+    {
+        "tank_id":"T105",
+        "current_level":5.97,
+        "oil_type":"FUEL OIL",
+        "inventory":960.84,
+        "safe_tank_capacity":30464.28,
+        "maximum_tank_capacity":32018.58,
+        "tank_capacity_per_meter":2826,
+        "safe_tank_level":16.75,
+        "maximum_tank_level":17.3
+    },
+    {
+        "tank_id":"T106",
+        "current_level":16.043,
+        "oil_type":"MALYSIA HEAVY",
+        "inventory":3764.232,
+        "safe_tank_capacity":2054.502,
+        "maximum_tank_capacity":3552.282,
+        "tank_capacity_per_meter":2826,
+        "safe_tank_level":16.77,
+        "maximum_tank_level":17.3
+    },
+    {
+        "tank_id":"T107",
+        "current_level":14.633,
+        "oil_type":"ESPO",
+        "inventory":19926.126,
+        "safe_tank_capacity":6039.162,
+        "maximum_tank_capacity":7536.942,
+        "tank_capacity_per_meter":2826,
+        "safe_tank_level":16.77,
+        "maximum_tank_level":17.3
+    },
+    {
+        "tank_id":"T108",
+        "current_level":7.783,
+        "oil_type":"MURBAN\/ESPO",
+        "inventory":1540.17,
+        "safe_tank_capacity":25397.262,
+        "maximum_tank_capacity":26895.042,
+        "tank_capacity_per_meter":2826,
+        "safe_tank_level":16.77,
+        "maximum_tank_level":17.3
+    },
+    {
+        "tank_id":"T201",
+        "current_level":19.099,
+        "oil_type":"FUEL OIL",
+        "inventory":33964.14,
+        "safe_tank_capacity":1514.03,
+        "maximum_tank_capacity":3023.03,
+        "tank_capacity_per_meter":5030,
+        "safe_tank_level":19.4,
+        "maximum_tank_level":19.7
+    },
+    {
+        "tank_id":"T202",
+        "current_level":18.845,
+        "oil_type":"FUEL OIL",
+        "inventory":945.264,
+        "safe_tank_capacity":2791.65,
+        "maximum_tank_capacity":4300.65,
+        "tank_capacity_per_meter":5030,
+        "safe_tank_level":19.4,
+        "maximum_tank_level":19.7
+    },
+    {
+        "tank_id":"T203",
+        "current_level":13.861,
+        "oil_type":"BITUMEN MIXTURE",
+        "inventory":1518.456,
+        "safe_tank_capacity":27861.17,
+        "maximum_tank_capacity":29370.17,
+        "tank_capacity_per_meter":5030,
+        "safe_tank_level":19.4,
+        "maximum_tank_level":19.7
+    },
+    {
+        "tank_id":"T204",
+        "current_level":4.372,
+        "oil_type":"MURBAN",
+        "inventory":13047.66,
+        "safe_tank_capacity":75590.84,
+        "maximum_tank_capacity":77099.84,
+        "tank_capacity_per_meter":5030,
+        "safe_tank_level":19.4,
+        "maximum_tank_level":19.7
+    },
+    {
+        "tank_id":"T205",
+        "current_level":19.09,
+        "oil_type":"MALAYSIA LIGHT",
+        "inventory":90428.58,
+        "safe_tank_capacity":1559.3,
+        "maximum_tank_capacity":3068.3,
+        "tank_capacity_per_meter":5030,
+        "safe_tank_level":19.4,
+        "maximum_tank_level":19.7
+    },
+    {
+        "tank_id":"T206",
+        "current_level":8.254,
+        "oil_type":"燃料油",
+        "inventory":1759.8,
+        "safe_tank_capacity":56064.38,
+        "maximum_tank_capacity":57573.38,
+        "tank_capacity_per_meter":5030,
+        "safe_tank_level":19.4,
+        "maximum_tank_level":19.7
+    },
+    {
+        "tank_id":"T301",
+        "current_level":13.271,
+        "oil_type":"OMAN",
+        "inventory":2197.236,
+        "safe_tank_capacity":29822.87,
+        "maximum_tank_capacity":32337.87,
+        "tank_capacity_per_meter":5030,
+        "safe_tank_level":19.2,
+        "maximum_tank_level":19.7
+    },
+    {
+        "tank_id":"T302",
+        "current_level":0.491,
+        "oil_type":"KIMANIS HEAVY BLEND",
+        "inventory":59792.976,
+        "safe_tank_capacity":94106.27,
+        "maximum_tank_capacity":96621.27,
+        "tank_capacity_per_meter":5030,
+        "safe_tank_level":19.2,
+        "maximum_tank_level":19.7
+    },
+    {
+        "tank_id":"T303",
+        "current_level":8.954,
+        "oil_type":"XIJIANG\/ENPING",
+        "inventory":17779.008,
+        "safe_tank_capacity":51537.38,
+        "maximum_tank_capacity":54052.38,
+        "tank_capacity_per_meter":5030,
+        "safe_tank_level":19.2,
+        "maximum_tank_level":19.7
+    },
+    {
+        "tank_id":"T304",
+        "current_level":2.511,
+        "oil_type":"HUNGO",
+        "inventory":4128.786,
+        "safe_tank_capacity":39250.314,
+        "maximum_tank_capacity":41793.714,
+        "tank_capacity_per_meter":2826,
+        "safe_tank_level":16.4,
+        "maximum_tank_level":17.3
+    },
+    {
+        "tank_id":"T305",
+        "current_level":9.696,
+        "oil_type":"HUNGO",
+        "inventory":853.452,
+        "safe_tank_capacity":18945.504,
+        "maximum_tank_capacity":21488.904,
+        "tank_capacity_per_meter":2826,
+        "safe_tank_level":16.4,
+        "maximum_tank_level":17.3
+    },
+    {
+        "tank_id":"T306",
+        "current_level":2.7,
+        "oil_type":"DJENO",
+        "inventory":101.736,
+        "safe_tank_capacity":38716.2,
+        "maximum_tank_capacity":41259.6,
+        "tank_capacity_per_meter":2826,
+        "safe_tank_level":16.4,
+        "maximum_tank_level":17.3
+    },
+    {
+        "tank_id":"T307",
+        "current_level":9.658,
+        "oil_type":"MALYSIA HEAVY",
+        "inventory":146.952,
+        "safe_tank_capacity":19052.892,
+        "maximum_tank_capacity":21596.292,
+        "tank_capacity_per_meter":2826,
+        "safe_tank_level":16.4,
+        "maximum_tank_level":17.3
+    },
+    {
+        "tank_id":"万华T201",
+        "current_level":18.805,
+        "oil_type":"SINGMA",
+        "inventory":259.0,
+        "safe_tank_capacity":198.51,
+        "maximum_tank_capacity":707.51,
+        "tank_capacity_per_meter":1018,
+        "safe_tank_level":19.0,
+        "maximum_tank_level":19.5
+    },
+    {
+        "tank_id":"万华T202",
+        "current_level":18.734,
+        "oil_type":"TUPI\/锦州251",
+        "inventory":195.0,
+        "safe_tank_capacity":270.788,
+        "maximum_tank_capacity":779.788,
+        "tank_capacity_per_meter":1018,
+        "safe_tank_level":19.0,
+        "maximum_tank_level":19.5
+    },
+    {
+        "tank_id":"万华T203",
+        "current_level":2.309,
+        "oil_type":"HUNGO",
+        "inventory":689.0,
+        "safe_tank_capacity":16991.438,
+        "maximum_tank_capacity":17500.438,
+        "tank_capacity_per_meter":1018,
+        "safe_tank_level":19.0,
+        "maximum_tank_level":19.5
+    },
+    {
+        "tank_id":"万华T204",
+        "current_level":2.346,
+        "oil_type":"ESPO",
+        "inventory":5724.0,
+        "safe_tank_capacity":16953.772,
+        "maximum_tank_capacity":17462.772,
+        "tank_capacity_per_meter":1018,
+        "safe_tank_level":19.0,
+        "maximum_tank_level":19.5
+    },
+    {
+        "tank_id":"万华T205",
+        "current_level":2.287,
+        "oil_type":"ESPO",
+        "inventory":292.0,
+        "safe_tank_capacity":17013.834,
+        "maximum_tank_capacity":17522.834,
+        "tank_capacity_per_meter":1018,
+        "safe_tank_level":19.0,
+        "maximum_tank_level":19.5
+    },
+    {
+        "tank_id":"万华T206",
+        "current_level":18.821,
+        "oil_type":"SINGMA",
+        "inventory":16699.0,
+        "safe_tank_capacity":-1650.178,
+        "maximum_tank_capacity":691.222,
+        "tank_capacity_per_meter":1018,
+        "safe_tank_level":17.2,
+        "maximum_tank_level":19.5
+    },
+    {
+        "tank_id":"万华T301",
+        "current_level":7.217,
+        "oil_type":"OMAN",
+        "inventory":23678.93,
+        "safe_tank_capacity":16601.729,
+        "maximum_tank_capacity":20426.629,
+        "tank_capacity_per_meter":1663,
+        "safe_tank_level":17.2,
+        "maximum_tank_level":19.5
+    },
+    {
+        "tank_id":"万华T303",
+        "current_level":7.155,
+        "oil_type":"OMAN",
+        "inventory":327.32,
+        "safe_tank_capacity":16704.835,
+        "maximum_tank_capacity":20529.735,
+        "tank_capacity_per_meter":1663,
+        "safe_tank_level":17.2,
+        "maximum_tank_level":19.5
+    },
+    {
+        "tank_id":"万华T304",
+        "current_level":16.833,
+        "oil_type":"FUEL OIL",
+        "inventory":344.02,
+        "safe_tank_capacity":1940.721,
+        "maximum_tank_capacity":2605.921,
+        "tank_capacity_per_meter":1663,
+        "safe_tank_level":18.0,
+        "maximum_tank_level":18.4
+    },
+    {
+        "tank_id":"万华T401",
+        "current_level":5.401,
+        "oil_type":"OMAN",
+        "inventory":323.98,
+        "safe_tank_capacity":20914.34,
+        "maximum_tank_capacity":21578.34,
+        "tank_capacity_per_meter":1660,
+        "safe_tank_level":18.0,
+        "maximum_tank_level":18.4
+    },
+    {
+        "tank_id":"万华T402",
+        "current_level":5.64,
+        "oil_type":"OMAN",
+        "inventory":197.06,
+        "safe_tank_capacity":20517.6,
+        "maximum_tank_capacity":21181.6,
+        "tank_capacity_per_meter":1660,
+        "safe_tank_level":18.0,
+        "maximum_tank_level":18.4
+    },
+    {
+        "tank_id":"万华T403",
+        "current_level":13.904,
+        "oil_type":"FUEL OIL",
+        "inventory":5641.26,
+        "safe_tank_capacity":6799.36,
+        "maximum_tank_capacity":7463.36,
+        "tank_capacity_per_meter":1660,
+        "safe_tank_level":18.0,
+        "maximum_tank_level":18.4
+    },
+    {
+        "tank_id":"万华T404",
+        "current_level":11.682,
+        "oil_type":"SINGMA",
+        "inventory":161.99,
+        "safe_tank_capacity":11981.88,
+        "maximum_tank_capacity":12479.88,
+        "tank_capacity_per_meter":1660,
+        "safe_tank_level":18.9,
+        "maximum_tank_level":19.2
+    },
+    {
+        "tank_id":"万华T501",
+        "current_level":18.619,
+        "oil_type":"MURBAN",
+        "inventory":2888.04,
+        "safe_tank_capacity":691.26,
+        "maximum_tank_capacity":1429.26,
+        "tank_capacity_per_meter":2460,
+        "safe_tank_level":18.9,
+        "maximum_tank_level":19.2
+    },
+    {
+        "tank_id":"万华T502",
+        "current_level":11.271,
+        "oil_type":"ESPO",
+        "inventory":-8646.9,
+        "safe_tank_capacity":18767.34,
+        "maximum_tank_capacity":19505.34,
+        "tank_capacity_per_meter":2460,
+        "safe_tank_level":18.9,
+        "maximum_tank_level":19.2
+    },
+    {
+        "tank_id":"万华T503",
+        "current_level":1.257,
+        "oil_type":"OMAN",
+        "inventory":39812.64,
+        "safe_tank_capacity":43401.78,
+        "maximum_tank_capacity":44139.78,
+        "tank_capacity_per_meter":2460,
+        "safe_tank_level":18.9,
+        "maximum_tank_level":19.2
+    },
+    {
+        "tank_id":"万华T504",
+        "current_level":13.823,
+        "oil_type":"LENGHUN BLEND\/SHARJAH HEAVY",
+        "inventory":489.54,
+        "safe_tank_capacity":12489.42,
+        "maximum_tank_capacity":13227.42,
+        "tank_capacity_per_meter":2460,
+        "safe_tank_level":18.9,
+        "maximum_tank_level":19.2
+    },
+    {
+        "tank_id":"万华T505",
+        "current_level":9.048,
+        "oil_type":"MURBAN",
+        "inventory":472.32,
+        "safe_tank_capacity":24235.92,
+        "maximum_tank_capacity":24973.92,
+        "tank_capacity_per_meter":2460,
+        "safe_tank_level":18.9,
+        "maximum_tank_level":19.2
+    },
+    {
+        "tank_id":"万华T506",
+        "current_level":15.791,
+        "oil_type":"ESPO",
+        "inventory":484.62,
+        "safe_tank_capacity":7648.14,
+        "maximum_tank_capacity":8386.14,
+        "tank_capacity_per_meter":2460,
+        "safe_tank_level":18.9,
+        "maximum_tank_level":19.2
+    },
+    {
+    "tank_id": "211",
+    "tank_name": "211",
+    "tank_area": "东营"
+    
+    
+  },
+  {
+    "tank_id": "212",
+    "tank_name": "212",
+    "tank_area": "东营"
+    
+    
+  },
+  {
+    "tank_id": "221",
+    "tank_name": "221",
+    "tank_area": "东营"
+    
+    
+  },
+  {
+    "tank_id": "222",
+    "tank_name": "222",
+    "tank_area": "东营"
+    
+    
+  },
+  {
+    "tank_id": "231",
+    "tank_name": "231",
+    "tank_area": "东营"
+    
+    
+  },
+  {
+    "tank_id": "232",
+    "tank_name": "232",
+    "tank_area": "东营"
+    
+    
+  },
+  {
+    "tank_id": "241",
+    "tank_name": "241",
+    "tank_area": "东营"
+    
+    
+  },
+  {
+    "tank_id": "242",
+    "tank_name": "242",
+    "tank_area": "东营"
+    
+    
+  },
+  {
+    "tank_id": "251",
+    "tank_name": "251",
+    "tank_area": "东营"
+    
+    
+  },
+  {
+    "tank_id": "252",
+    "tank_name": "252",
+    "tank_area": "东营"
+    
+    
+  },
+  {
+    "tank_id": "261",
+    "tank_name": "261",
+    "tank_area": "东营"
+    
+    
+  },
+  {
+    "tank_id": "262",
+    "tank_name": "262",
+    "tank_area": "东营"
+    
+    
+  },
+  {
+    "tank_id": "271",
+    "tank_name": "271",
+    "tank_area": "东营"
+    
+    
+  },
+  {
+    "tank_id": "272",
+    "tank_name": "272",
+    "tank_area": "东营"
+    
+    
+  },
+  {
+    "tank_id": "281",
+    "tank_name": "281",
+    "tank_area": "东营"
+    
+    
+  },
+  {
+    "tank_id": "282",
+    "tank_name": "282",
+    "tank_area": "东营"
+    
+    
+  },
+  {
+    "tank_id": "291",
+    "tank_name": "291",
+    "tank_area": "东营"
+    
+    
+  },
+  {
+    "tank_id": "292",
+    "tank_name": "292",
+    "tank_area": "东营"
+    
+    
+  },
+  {
+    "tank_id": "C101",
+    "tank_name": "C101",
+    "tank_area": "仓储"
+    
+    
+  },
+  {
+    "tank_id": "C102",
+    "tank_name": "C102",
+    "tank_area": "仓储"
+    
+    
+  },
+  {
+    "tank_id": "C103",
+    "tank_name": "C103",
+    "tank_area": "仓储"
+    
+    
+  },
+  {
+    "tank_id": "C104",
+    "tank_name": "C104",
+    "tank_area": "仓储"
+    
+    
+  },
+  {
+    "tank_id": "C105",
+    "tank_name": "C105",
+    "tank_area": "仓储"
+    
+    
+  },
+  {
+    "tank_id": "C106",
+    "tank_name": "C106",
+    "tank_area": "仓储"
+    
+    
+  },
+  {
+    "tank_id": "C107",
+    "tank_name": "C107",
+    "tank_area": "仓储"
+    
+    
+  },
+  {
+    "tank_id": "C108",
+    "tank_name": "C108",
+    "tank_area": "仓储"
+    
+    
+  },
+  {
+    "tank_id": "C201",
+    "tank_name": "C201",
+    "tank_area": "仓储"
+    
+    
+  },
+  {
+    "tank_id": "C202",
+    "tank_name": "C202",
+    "tank_area": "仓储"
+    
+    
+  },
+  {
+    "tank_id": "C203",
+    "tank_name": "C203",
+    "tank_area": "仓储"
+    
+    
+  },
+  {
+    "tank_id": "C204",
+    "tank_name": "C204",
+    "tank_area": "仓储"
+    
+    
+  },
+  {
+    "tank_id": "C205",
+    "tank_name": "C205",
+    "tank_area": "仓储"
+    
+    
+  },
+  {
+    "tank_id": "C206",
+    "tank_name": "C206",
+    "tank_area": "仓储"
+    
+    
+  },
+  {
+    "tank_id": "C301",
+    "tank_name": "C301",
+    "tank_area": "仓储"
+    
+    
+  },
+  {
+    "tank_id": "C302",
+    "tank_name": "C302",
+    "tank_area": "仓储"
+    
+    
+  },
+  {
+    "tank_id": "C303",
+    "tank_name": "C303",
+    "tank_area": "仓储"
+    
+    
+  },
+  {
+    "tank_id": "C304",
+    "tank_name": "C304",
+    "tank_area": "仓储"
+    
+    
+  },
+  {
+    "tank_id": "C305",
+    "tank_name": "C305",
+    "tank_area": "仓储"
+    
+    
+  },
+  {
+    "tank_id": "C306",
+    "tank_name": "C306",
+    "tank_area": "仓储"
+    
+    
+  },
+  {
+    "tank_id": "C307",
+    "tank_name": "C307",
+    "tank_area": "仓储"
+    
+    
+  },
+  {
+    "tank_id": "寿光201",
+    "tank_name": "寿光201",
+    "tank_area": "寿光"
+    
+    
+  },
+  {
+    "tank_id": "寿光202",
+    "tank_name": "寿光202",
+    "tank_area": "寿光"
+    
+    
+  },
+  {
+    "tank_id": "寿光203",
+    "tank_name": "寿光203",
+    "tank_area": "寿光"
+    
+    
+  },
+  {
+    "tank_id": "寿光204",
+    "tank_name": "寿光204",
+    "tank_area": "寿光"
+    
+    
+  },
+  {
+    "tank_id": "昌邑",
+    "tank_name": "昌邑",
+    "tank_area": "昌邑"
+  }
+]
