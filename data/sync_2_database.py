@@ -1,4 +1,4 @@
-from models.models import Tank, Customer, CustomerOrder, Pipeline, Branch, Oil, Base
+from models.models import Tank, Customer, CustomerOrder, Pipeline, Branch, Oil, Base, Site
 from datetime import datetime, timedelta
 from typing import List, Dict, Optional
 import uuid
@@ -100,7 +100,12 @@ if __name__ == "__main__":
                 'branch_start_time',
                 'branch_end_time'
             ]
-        }
+        },
+        {
+            'model': Site,
+            'path': './data/json/site.json',
+            'time_fields': []
+        },
     ]
 
     # 批量加载数据
