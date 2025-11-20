@@ -1,4 +1,4 @@
-from models.models import Tank, Customer, CustomerOrder, Pipeline, Branch, Oil, Base
+from models.models import Tank, Customer, CustomerOrder, Pipeline, Branch, Oil, Base, Site
 from datetime import datetime, timedelta
 from typing import List, Dict, Optional
 import uuid
@@ -12,6 +12,7 @@ def init_db(db_url: str = 'sqlite:///pipeline_batch.db'):
     config = load_config()
     db_cfg = config['database']
     db_url = get_database_url(db_cfg, include_db=True)
+    print("生成的数据库URL:", db_url)
     engine = create_engine(db_url, echo=False, future=True)
 
     print("删除所有现有表...")
@@ -110,7 +111,12 @@ if __name__ == "__main__":
                 'branch_start_time',
                 'branch_end_time'
             ]
-        }
+        },
+        {
+            'model': Site,
+            'path': './data/json/site.json',
+            'time_fields': []
+        },
     ]
 
     # 批量加载数据

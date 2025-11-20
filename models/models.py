@@ -70,19 +70,19 @@ class CustomerOrder(Base):
     # preferred_branches = Column(JSON, default=list)
     status = Column(String(50), default="PENDING")
 
-class DispatchOrder(Base):
-    __tablename__ = 'dispatch_order'
+# class DispatchOrder(Base):
+#     __tablename__ = 'dispatch_order'
   
-    dispatch_order_id = Column(Integer, primary_key=True, autoincrement=True)
-    custormer_order_id = Column(String(50), primary_key=True)
-    oil_type = Column(String(50))
-    required_volume = Column(Float)
-    source_tank_id = Column(String(50))
-    target_tank_id = Column(String(50))
-    pipeline_path = Column(JSON)  # 管线ID列表
-    start_time = Column(Integer)
-    end_time = Column(Integer)
-    status = Column(String(50), default="DRAFT")  # 状态: DRAFT/SCHEDULED/RUNNING/COMPLETED/CONFLICT
+#     dispatch_order_id = Column(Integer, primary_key=True, autoincrement=True)
+#     custormer_order_id = Column(String(50), primary_key=True)
+#     oil_type = Column(String(50))
+#     required_volume = Column(Float)
+#     source_tank_id = Column(String(50))
+#     target_tank_id = Column(String(50))
+#     pipeline_path = Column(JSON)  # 管线ID列表
+#     start_time = Column(Integer)
+#     end_time = Column(Integer)
+#     status = Column(String(50), default="DRAFT")  # 状态: DRAFT/SCHEDULED/RUNNING/COMPLETED/CONFLICT
   # cleaning_required = Column(Boolean, default=False)  # 是否需要清洗
 
 # class Branch(Base):
