@@ -128,7 +128,7 @@ class Branch(Base):
 
 
 class Oil(Base):
-    __tablename__ = 'oils'
+    __tablename__ = 'oil'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     oil_name = Column(String(50))

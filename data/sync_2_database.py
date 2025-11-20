@@ -2,17 +2,28 @@ from models.models import Tank, Customer, CustomerOrder, Pipeline, Branch, Oil, 
 from datetime import datetime, timedelta
 from typing import List, Dict, Optional
 import uuid
-from sqlalchemy import create_engine, Column, String, Float, DateTime, Integer, Boolean, ForeignKey, JSON
+from sqlalchemy import create_engine, text, Column, String, Float, DateTime, Integer, Boolean, ForeignKey, JSON
 from sqlalchemy.orm import declarative_base, relationship, sessionmaker
 import json
 from utils.database import load_config, get_database_url
 
 def init_db(db_url: str = 'sqlite:///pipeline_batch.db'):
+
     config = load_config()
     db_cfg = config['database']
     db_url = get_database_url(db_cfg, include_db=True)
     engine = create_engine(db_url, echo=False, future=True)
+
+    print("删除所有现有表...")
+    with engine.connect() as conn:
+        conn.execute(text("SET FOREIGN_KEY_CHECKS = 0;"))
+        Base.metadata.drop_all(conn, checkfirst=True)
+        conn.execute(text("SET FOREIGN_KEY_CHECKS = 1;"))
+
+    print("🛠️ 正在同步表结构...")
     Base.metadata.create_all(engine)
+    print("✅ 表结构已同步。")
+
     SessionLocal = sessionmaker(bind=engine)
     return SessionLocal
 

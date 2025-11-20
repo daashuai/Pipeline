@@ -115,7 +115,6 @@ def test_connection():
 
         session.add(branch)
 
-        # 3. 创建 Order
         order_id = "ORD-999"
         order = Order(
             order_id=order_id,
