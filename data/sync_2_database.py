@@ -11,6 +11,7 @@ def init_db(db_url: str = 'sqlite:///pipeline_batch.db'):
     config = load_config()
     db_cfg = config['database']
     db_url = get_database_url(db_cfg, include_db=True)
+    print("生成的数据库URL:", db_url)
     engine = create_engine(db_url, echo=False, future=True)
     Base.metadata.create_all(engine)
     SessionLocal = sessionmaker(bind=engine)
