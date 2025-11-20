@@ -14,7 +14,7 @@ Base = declarative_base()
 
 # === ORM 实体定义 ===
 class Tank(Base):
-    __tablename__ = 'tanks'
+    __tablename__ = 'tank'
     tank_id = Column(String(50), primary_key=True)  
     tank_name = Column(String(50))
     tank_area = Column(String(50))
@@ -46,14 +46,14 @@ class Tank(Base):
         self.status = "AVAILABLE"
 
 class Customer(Base):
-    __tablename__ = 'customers'
+    __tablename__ = 'customer'
 
     customer_id= Column(String(50), primary_key=True)
     customer_name = Column(String(100))
 
 
 class CustomerOrder(Base):
-    __tablename__ = 'customer_orders'
+    __tablename__ = 'customer_order'
 
     custormer_order_id = Column(Integer, primary_key=True, autoincrement=True)
     customer_name = Column(String(50))
@@ -70,32 +70,38 @@ class CustomerOrder(Base):
     # preferred_branches = Column(JSON, default=list)
     status = Column(String(50), default="PENDING")
 
-# class DispatchOrder(Base):
-#     __tablename__ = 'dispatch_orders'
-    
-#     dispatch_order_id = Column(Integer, primary_key=True, autoincrement=True)
-#     custormer_order_id = Column(String(50), primary_key=True)
-#     oil_type = Column(String(50))
-#     required_volume = Column(Float)
-#     source_tank_id = Column(String(50))
-#     target_tank_id = Column(String(50))
-#     pipeline_path = Column(JSON)  # 管线ID列表
-#     start_time = Column(Integer)
-#     end_time = Column(Integer)
-#     status = Column(String(50), default="DRAFT")  # 状态: DRAFT/SCHEDULED/RUNNING/COMPLETED/CONFLICT
-    # cleaning_required = Column(Boolean, default=False)  # 是否需要清洗
+class DispatchOrder(Base):
+    __tablename__ = 'dispatch_order'
+  
+    dispatch_order_id = Column(Integer, primary_key=True, autoincrement=True)
+    custormer_order_id = Column(String(50), primary_key=True)
+    oil_type = Column(String(50))
+    required_volume = Column(Float)
+    source_tank_id = Column(String(50))
+    target_tank_id = Column(String(50))
+    pipeline_path = Column(JSON)  # 管线ID列表
+    start_time = Column(Integer)
+    end_time = Column(Integer)
+    status = Column(String(50), default="DRAFT")  # 状态: DRAFT/SCHEDULED/RUNNING/COMPLETED/CONFLICT
+  # cleaning_required = Column(Boolean, default=False)  # 是否需要清洗
 
 # class Branch(Base):
 #     __tablename__ = 'branches'
-
+# 
 #     branch_id = Column(String(50), primary_key=True)
 #     max_rate_m3h = Column(Float)
 #     stop_windows = Column(JSON, default=list)
 #     status = Column(String(20), default="AVAILABLE")
 
+class Site(Base):
+    __tablename__ = 'site'
+    site_id = Column(String(50), primary_key=True)
+    site_name = Column(String(50))
 
-class Pipeline_info(Base):
-    __tablename__ = 'pipeline_info' 
+
+
+class Pipeline(Base):
+    __tablename__ = 'pipeline' 
 
     pipe_id = Column(String(50), primary_key=True)
     pipe_name = Column(String(50))
@@ -106,13 +112,14 @@ class Pipeline_info(Base):
 
 
 # 记录管道干线上站点的信息
-class Pipeline_detail(Base):
-    __tablename__ = 'pipeline_detail' 
+class Branch(Base):
+    __tablename__ = 'branch' 
 
-    id = Column(Integer, primary_key=True, autoincrement=True)
+    branch_id = Column(Integer, primary_key=True, autoincrement=True)
     pipe_id = Column(String(50)) 
+    site_id = Column(String(50), primary_key=True)
     pipe_name = Column(String(50))
-    station_name = Column(String(50)) # 站点名称
+    site_name = Column(String(50))
     pipe_mileage = Column(Float) # 绝对里程
     pipe_elevation = Column(Float) # 高程
     is_begin = Column(String(10)) # 是否作为起点
