@@ -1,4 +1,4 @@
-from models.models import Tank, Customer, CustomerOrder, Pipeline, Branch, Oil, Base, Site
+from models import TankDB, CustomerDB, CustomerOrderDB, PipelineDB, BranchDB, OilDB, Base, SiteDB
 from datetime import datetime, timedelta
 from typing import List, Dict, Optional
 import uuid
@@ -77,32 +77,32 @@ if __name__ == "__main__":
     # 定义数据加载配置
     data_configs = [
         {
-            'model': Tank,
+            'model': TankDB,
             'path': './data/json/tank.json',
             'time_fields': []
         },
         {
-            'model': Pipeline,
+            'model': PipelineDB,
             'path': './data/json/pipeline.json',
             'time_fields': []
         },
         {
-            'model': Branch,
+            'model': BranchDB,
             'path': './data/json/branch.json',
             'time_fields': []
         },
         {
-            'model': Customer,
+            'model': CustomerDB,
             'path': './data/json/customer.json',
             'time_fields': []
         },
         {
-            'model': Oil,
+            'model': OilDB,
             'path': './data/json/oil.json',
             'time_fields': []
         },
         {
-            'model': CustomerOrder,
+            'model': CustomerOrderDB,
             'path': './data/json/customer_order.json',
             'time_fields': [
                 'start_time',
@@ -113,7 +113,7 @@ if __name__ == "__main__":
             ]
         },
         {
-            'model': Site,
+            'model': SiteDB,
             'path': './data/json/site.json',
             'time_fields': []
         },
