@@ -118,7 +118,7 @@ def main():
     # <10 表示左对齐占10格，<5 表示左对齐占5格
     header = (
         f"{'ID':<10} | {'Cust':<6} | {'Vol':<8} | "
-        f"{'Status':<10} | {'Start':<5} | {'End':<5} | "
+        f"{'Status':<10} | {'StartTime':<16} | {'EndTime':<16} | "
         f"{'Route (Src->Tgt)':<20} | {'Path Info'}"
     )
 
@@ -127,15 +127,18 @@ def main():
 
     for order in queue:
         # 处理路径字符串
-        path_str = " -> ".join(order.pipeline_path[0]) if order.pipeline_path else "No Path"
+        path_str = " -> ".join(order.pipeline_path) if order.pipeline_path else "No Path"
+
+        start_time = datetime.fromtimestamp(order.start_time).strftime('%Y-%m-%d %H:%M') if order.start_time else "N/A"
+        end_time = datetime.fromtimestamp(order.end_time).strftime('%Y-%m-%d %H:%M') if order.end_time else "N/A"
         
         # 2. 打印每一行数据，对应上面的表头
         print(f"{order.dispatch_order_id:<10} | "
             f"{order.customer_order_id:<6} | "
             f"{order.required_volume:<8.1f} | "
             f"{order.status:<10} | "       # 新增：状态
-            f"{order.start_time:<5} | "    # 新增：开始时间
-            f"{order.end_time:<5} | "      # 新增：结束时间
+            f"{start_time:<10} | "    # 新增：开始时间
+            f"{end_time:<10} | "      # 新增：结束时间
             f"{order.source_tank_id}->{order.target_tank_id:<11} | "
             f"{path_str}")
     

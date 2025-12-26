@@ -304,11 +304,18 @@ class Scheduler:
     def calculate_duration(self, quantity: float, path: List[str], state: State) -> float:
         """计算输送时间（小时）"""
         min_capacity = float('inf')
-        for pipeline_id in path:
-            pipeline = state.pipelines[pipeline_id]
-            if pipeline.capacity < min_capacity:
-                min_capacity = pipeline.capacity
-        
+        # for pipeline_id in path:
+        #     pipeline = state.pipelines[pipeline_id]
+        #     if pipeline.capacity < min_capacity:
+        #         min_capacity = pipeline.capacity
+
+        if path[2] == 'LOCAL':
+            return 0
+
+        pipeline = state.pipelines[path[2]]  # 中间的pipeline_id    
+        if pipeline.pipe_capacity_per_meter < min_capacity:
+            min_capacity = pipeline.pipe_capacity_per_meter * 100
+    
         if min_capacity <= 0:
             return float('inf')
         
@@ -319,7 +326,74 @@ class Scheduler:
         # 简化：固定2小时
         return 2.0
 
-    def schedule_dispatch_order(self, dispatch_order: DispatchOrder, queue: DispatchOrderQueueManager) -> Optional[DispatchOrder]:
+    # def schedule_dispatch_order(self, dispatch_order: DispatchOrder, queue: DispatchOrderQueueManager) -> Optional[DispatchOrder]:
+    #     """调度单个调度工单，找到合适的源油罐、目标油罐和运输路径，并更新状态"""
+
+    #     # 1. 为调度工单找到合适的source-tank（从哪个油罐出油）
+    #     state = queue.get_order_state_last()
+    #     source_tank_id = self._find_best_source_tank(dispatch_order, state)
+    #     if not source_tank_id:
+    #         print(f"找不到合适的源油罐，油品类型: {dispatch_order.oil_type}, 需要体积: {dispatch_order.required_volume}")
+    #         return None
+        
+    #     # 2. 找到往哪个终点的油罐存放（目标油罐）
+    #     # 根据dispatch_order中的信息确定目标油罐，或者根据业务逻辑查找
+    #     target_tank_id = self._find_best_target_tank(dispatch_order, state)
+    #     if not target_tank_id:
+    #         # 如果调度工单中没有指定目标油罐，则根据业务需求确定
+    #         # 例如，可以使用dispatch_order.customer_order_id关联的entry_tank_id
+    #         # 这里我们假设目标油罐已经指定在dispatch_order中
+    #         print(f"调度工单 {dispatch_order.dispatch_order_id} 未指定目标油罐")
+    #         return None
+        
+    #     # 3. 寻找运输路径
+    #     path = self._find_feasible_path(source_tank_id,target_tank_id,dispatch_order,state)
+    #     if path is None:
+    #         print(f"找不到可行路径")
+    #         return None
+        
+    #     # 4. 根据找到的信息更新调度工单
+    #     # 更新调度工单中的源油罐、目标油罐和路径信息
+    #     dispatch_order.source_tank_id = source_tank_id
+    #     dispatch_order.target_tank_id = target_tank_id
+    #     dispatch_order.pipeline_path = path
+
+    #     queue.add_order(dispatch_order)
+
+        
+    #     # 计算开始和结束时间
+    #     duration = self.calculate_duration(dispatch_order.required_volume, path, state)
+    #     start_time = dispatch_order.start_time if dispatch_order.start_time > 0 else int(time.time())
+    #     end_time = start_time + int(duration * 3600)  # 转换为秒
+        
+    #     dispatch_order.start_time = start_time
+    #     dispatch_order.end_time = end_time
+    #     # 设置工单状态为已调度
+    #     dispatch_order.status = "SCHEDULED"
+        
+    #     # 5. 用更新好的调度工单去更新state信息
+    #     # 更新基础信息
+    #     # state.add_dispatch_order(dispatch_order.__dict__)
+    #     # 
+    #     # # 更新调度工单队列信息（dispatcher）
+    #     # # 这里通过state.order_dispatcher来管理调度工单队列
+    #     # if state.order_dispatcher:
+    #     #     # 根据时间将工单移动到相应状态
+    #     #     from datetime import datetime
+    #     #     start_dt = datetime.fromtimestamp(dispatch_order.start_time)
+    #     #     end_dt = datetime.fromtimestamp(dispatch_order.end_time)
+    #     #     current_time = datetime.now()
+    #     #     
+    #     #     if end_dt < current_time:
+    #     #         state.order_dispatcher.move_order_to_completed(dispatch_order.dispatch_order_id)
+    #     #     elif start_dt <= current_time <= end_dt:
+    #     #         state.order_dispatcher.move_order_to_running(dispatch_order.dispatch_order_id)
+    #     #     else:
+    #     #         state.order_dispatcher.move_order_to_pending(dispatch_order.dispatch_order_id)
+    #     return dispatch_order
+
+
+    def schedule_dispatch_order(self, dispatch_order: DispatchOrder, queue: DispatchOrderQueueManager, current_time) -> Optional[DispatchOrder]:
         """调度单个调度工单，找到合适的源油罐、目标油罐和运输路径，并更新状态"""
 
         # 1. 为调度工单找到合适的source-tank（从哪个油罐出油）
@@ -355,14 +429,14 @@ class Scheduler:
 
         
         # 计算开始和结束时间
-        # duration = self.calculate_duration(dispatch_order.required_volume, path, state)
-        # start_time = dispatch_order.start_time if dispatch_order.start_time > 0 else int(time.time())
-        # end_time = start_time + int(duration * 3600)  # 转换为秒
-        # 
-        # dispatch_order.start_time = start_time
-        # dispatch_order.end_time = end_time
+        duration = self.calculate_duration(dispatch_order.required_volume, path, state)
+        start_time = dispatch_order.start_time if dispatch_order.start_time > 0 else current_time
+        end_time = start_time + int(duration * 3600)  # 转换为秒
+        
+        dispatch_order.start_time = start_time
+        dispatch_order.end_time = end_time
         # 设置工单状态为已调度
-        # dispatch_order.status = "SCHEDULED"
+        dispatch_order.status = "SCHEDULED"
         
         # 5. 用更新好的调度工单去更新state信息
         # 更新基础信息
@@ -383,7 +457,7 @@ class Scheduler:
         #         state.order_dispatcher.move_order_to_running(dispatch_order.dispatch_order_id)
         #     else:
         #         state.order_dispatcher.move_order_to_pending(dispatch_order.dispatch_order_id)
-        return dispatch_order
+        return dispatch_order, end_time
 
     def _find_best_target_tank(self, dispatch_order: DispatchOrder, state: State) -> Optional[str]:
         """根据dispatch_order的目标站点ID，在该站点的所有油罐中查找最适合存放的油罐"""
@@ -542,29 +616,26 @@ class Scheduler:
         # # 选择最高分路径
         # best_path = max(scored_paths, key=lambda x: x[1])
         # return best_path[0], best_path[1], "SUCCESS"
-        if len(possible_paths) == 1 :
-            return possible_paths
-        else:
-            return possible_paths[0]
+        return possible_paths[0]
 
 
     def update_state(self, state: State, dispatch_order: DispatchOrder):
         """更新状态"""
         # 1. 更新源油罐
         source_tank = state.tanks[dispatch_order.source_tank_id]
-        source_tank.current_level -= dispatch_order.quantity
+        source_tank.inventory -= dispatch_order.required_volume
         
         # 如果油罐变空，重置油品类型
-        if source_tank.current_level <= source_tank.safety_min + 0.1:
-            source_tank.current_oil = None
+        # if source_tank.current_level <= source_tank.safety_min + 0.1:
+        #     source_tank.current_oil = None
         
-        # 设置新的油品类型（如果需要）
-        if dispatch_order.cleaning_required:
-            source_tank.last_clean_time = dispatch_order.start_time
-            source_tank.current_oil = dispatch_order.oil_type
+        # # 设置新的油品类型（如果需要）
+        # if dispatch_order.cleaning_required:
+        #     source_tank.last_clean_time = dispatch_order.start_time
+        #     source_tank.current_oil = dispatch_order.oil_type
         
         # 更新占用时间
-        source_tank.occupied_until = max(source_tank.occupied_until, dispatch_order.end_time)
+        # source_tank.occupied_until = max(source_tank.occupied_until, dispatch_order.end_time)
         
         # 2. 更新管线
         for pipeline_id in dispatch_order.pipeline_path:
@@ -614,13 +685,15 @@ class Scheduler:
         dispatch_orders = self.split_order(order)
         
         # 3. 为每个子订单生成调度
+        start_time = int(time.time())
         for o in dispatch_orders:
             # 调度单个批次
-            dispatch_order = self.schedule_dispatch_order(o, queue)
-            
+            # dispatch_order = self.schedule_dispatch_order(o, queue)
+            dispatch_order, end_time = self.schedule_dispatch_order(o, queue, start_time)
+            start_time = end_time 
             # if dispatch_order:
             #     # 更新状态
-            #     self.update_state(state, dispatch_order)
+            #     self.update_state(queue.get_order_state_last(), dispatch_order)
             #     
             #     # 更新订单状态
             #     if dispatch_order.is_partial:
