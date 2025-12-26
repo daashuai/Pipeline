@@ -87,6 +87,7 @@ class Scheduler:
         second_dispatch = DispatchOrder(
             dispatch_order_id=str(order.customer_order_id) + "_02",
             customer_order_id=order.customer_order_id,
+            site_id=order.site_id,
             oil_type=order.oil_type,
             required_volume=second_quantity,
             status="DRAFT"
@@ -156,7 +157,7 @@ class Scheduler:
         # 情况1: 源油罐和目标油罐在同一站点
         if source_site_id == target_site_id:
             path = [source_tank.tank_id, "LOCAL", "LOCAL", "LOCAL", target_tank.tank_id]
-            paths.extend(path)
+            paths.append(path)
             return paths
         
         # 情况2: 源油罐和目标油罐在不同站点
@@ -541,8 +542,10 @@ class Scheduler:
         # # 选择最高分路径
         # best_path = max(scored_paths, key=lambda x: x[1])
         # return best_path[0], best_path[1], "SUCCESS"
-
-        return possible_paths[0]
+        if len(possible_paths) == 1 :
+            return possible_paths
+        else:
+            return possible_paths[0]
 
 
     def update_state(self, state: State, dispatch_order: DispatchOrder):
