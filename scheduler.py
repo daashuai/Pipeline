@@ -663,7 +663,7 @@ class Scheduler:
 
 
 
-    def schedule_order(self, order: CustomerOrder, queue: DispatchOrderQueueManager) -> List[DispatchOrder]:
+    def schedule_order(self, order: CustomerOrder, queue: DispatchOrderQueueManager, start_time) -> List[DispatchOrder]:
         """
         调度单个订单（兼容旧接口）
         
@@ -685,7 +685,7 @@ class Scheduler:
         dispatch_orders = self.split_order(order)
         
         # 3. 为每个子订单生成调度
-        start_time = int(time.time())
+        start_time = int(start_time)
         for o in dispatch_orders:
             # 调度单个批次
             # dispatch_order = self.schedule_dispatch_order(o, queue)
@@ -722,7 +722,7 @@ class Scheduler:
         # total_scheduled = undispatched_volume - order.remaining_quantity
         # logger.info(f"订单 {order.id} 调度成功: {total_scheduled}/{undispatched_volume} 吨")
         
-        return dispatch_orders
+        return dispatch_orders, start_time
     
     def rolling_schedule(self, orders: List[CustomerOrder], queue:DispatchOrderQueueManager) -> Tuple[List[DispatchOrder], List[CustomerOrder]]:
         """滚动调度多个订单
@@ -739,13 +739,15 @@ class Scheduler:
         
         # 按优先级排序订单
         sorted_orders = sorted(orders, key=lambda x: x.priority, reverse=True)
-        
+
+        start_time = int(time.time()) 
         for order in sorted_orders:
             if order.is_fully_scheduled():
                 continue
                 
             # 调用单个订单调度函数
-            dispatch_orders = self.schedule_order(order, queue)
+            dispatch_orders, end_time = self.schedule_order(order, queue, start_time)
+            start_time = end_time 
             
             if dispatch_orders:
                 # 添加到成功调度的工单列表
